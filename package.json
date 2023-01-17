@@ -1,0 +1,29 @@
+{
+  "name": "gpt-chat-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PrystaikoVolodymyr/gpt-chat-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PrystaikoVolodymyr/gpt-chat-server/issues"
+  },
+  "homepage": "https://github.com/PrystaikoVolodymyr/gpt-chat-server#readme",
+  "dependencies": {
+    "chatgpt": "^3.4.2",
+    "fastify": "^4.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
