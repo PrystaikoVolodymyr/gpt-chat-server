@@ -7,6 +7,7 @@ const server = fastify();
 server.post('/question', async (request, reply) => {
     try {
         const { question, email, password } = request.body
+
         const api = new ChatGPTAPIBrowser({
             email: email,
             password: password,
