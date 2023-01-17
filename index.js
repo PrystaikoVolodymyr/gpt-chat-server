@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 import fastify from 'fastify';
 import { ChatGPTAPIBrowser } from 'chatgpt';
 
@@ -25,8 +24,8 @@ server.post('/question', async (request, reply) => {
     }
 });
 
-server.listen({ port: 3000 }, (error) => {
-    console.log("Server Started")
+server.listen({ port: process.env.PORT || 5000 }, (error) => {
+    console.log("Server Started on port "+ (process.env.PORT || 5000))
     if (error) {
         console.error(error);
         process.exit(1);
