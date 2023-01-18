@@ -1,5 +1,7 @@
 import fastify from 'fastify';
 import { ChatGPTAPIBrowser } from 'chatgpt';
+import { executablePath } from 'puppeteer';
+
 
 const server = fastify();
 
@@ -10,6 +12,8 @@ server.post('/question', async (request, reply) => {
         const api = new ChatGPTAPIBrowser({
             email: email,
             password: password,
+            executablePath: executablePath(),
+            minimize: false,
             isGoogleLogin: true
         });
 
