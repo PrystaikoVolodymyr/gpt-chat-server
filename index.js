@@ -13,14 +13,14 @@ try {
         const api = new ChatGPTAPIBrowser({
             email: 'email',
             password: 'password',
-            executablePath: executablePath(),
+            // executablePath: executablePath(),
             minimize: false,
             isGoogleLogin: true
         });
 
         console.log(api)
         await api.initSession()
-        const result = await api.sendMessage(question)
+        const result = await api.sendMessage('question')
         console.log("result====================>", result);
         await api.closeSession()
 
