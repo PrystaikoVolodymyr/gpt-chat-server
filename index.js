@@ -38,4 +38,4 @@ server.listen({ port: process.env.PORT || 5000 }, (error) => {
     }
 });
 
-sendMessage()
+await sendMessage()
