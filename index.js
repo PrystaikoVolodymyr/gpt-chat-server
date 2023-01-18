@@ -2,7 +2,6 @@ import fastify from 'fastify';
 import { ChatGPTAPIBrowser } from 'chatgpt';
 import { executablePath } from 'puppeteer';
 
-
 const server = fastify();
 
 server.post('/question', async (request, reply) => {
