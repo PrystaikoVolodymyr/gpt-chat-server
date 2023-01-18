@@ -6,6 +6,7 @@ const server = fastify();
 
 server.post('/question', async (request, reply) => {
     try {
+        console.log("Session")
         const { question, email, password } = request.body
 
         const api = new ChatGPTAPIBrowser({
@@ -16,6 +17,7 @@ server.post('/question', async (request, reply) => {
             isGoogleLogin: true
         });
 
+        console.log(api)
         await api.initSession()
         const result = await api.sendMessage(question)
         console.log("result====================>", result);
