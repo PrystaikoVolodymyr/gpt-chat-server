@@ -11,8 +11,8 @@ try {
         // const { question, email, password } = request.body
 
         const api = new ChatGPTAPIBrowser({
-            email: 'email',
-            password: 'password',
+            email: 'volodymyr.prystaiko@aniline.io',
+            password: 'pss252322',
             // executablePath: executablePath(),
             minimize: false,
             isGoogleLogin: true
