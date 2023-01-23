@@ -1,13 +1,33 @@
 import fastify from 'fastify';
 import { ChatGPTAPIBrowser, getOpenAIAuth, ChatGPTAPI } from 'chatgpt';
-
+import proxyChain from 'proxy-chain';
+import puppeteer from 'puppeteer';
 import arr from './ps.js'
 
 async function newBrowser() {
+
+    const proxy = '23.229.101.55:8579';
+    const username = 'zxrmlhkl';
+    const password = '4vpmugc098he';
+
+    const originalUrl = `http://${username}:${password}@${proxy}`;
+    const newUrl = await proxyChain.anonymizeProxy(originalUrl);
+
+    console.log(newUrl)
+
+    // const browser = await puppeteer.launch(
+    //     {headless: false,
+    //         args: [
+    //             `--proxy-server=${newUrl}`,
+    //             '--proxy-bypass-list=<-loopback>',
+    //         ],
+    //         executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'});
+    //
+
     const api = new ChatGPTAPIBrowser({
         email: arr.email,
         password: arr.password,
-        minimize: false,
+        proxyServer: newUrl,
         isGoogleLogin: true,
     });
 
@@ -18,6 +38,8 @@ async function newBrowser() {
         // result.response is a markdown-formatted string
         console.log(result)
         await api.closeSession()
+        await proxyChain.closeAnonymizedProxy(newUrl, true);
+
 
 }
 

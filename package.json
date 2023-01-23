@@ -26,6 +26,7 @@
     "chatgpt": "^3.4.2",
     "chatgpt-io": "^1.0.9",
     "fastify": "^4.11.0",
+    "proxy-chain": "^2.2.0",
     "puppeteer": "^19.5.2",
     "xvfb": "^0.4.0"
   },
