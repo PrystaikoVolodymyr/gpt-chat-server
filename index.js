@@ -10,6 +10,7 @@ async function newBrowser() {
         minimize: false,
         isGoogleLogin: true,
     });
+
         console.log(api)
         await api.initSession()
         const result = await api.sendMessage('Write a python version of bubble sort.')
