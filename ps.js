@@ -1,4 +1,4 @@
 export default {
-    email: "volodymyr.p445@gmail.com",
-    password: "Prv_252322"
+    email: "chatgptvolodymyr@gmail.com",
+    password: "chatGpt_aniline"
 }

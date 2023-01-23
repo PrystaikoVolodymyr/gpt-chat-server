@@ -6,7 +6,7 @@ import arr from './ps.js'
 
 async function newBrowser() {
 
-    const proxy = '23.229.101.55:8579';
+    const proxy = '45.158.187.139:7148';
     const username = 'zxrmlhkl';
     const password = '4vpmugc098he';
 
@@ -14,14 +14,31 @@ async function newBrowser() {
     const newUrl = await proxyChain.anonymizeProxy(originalUrl);
 
     console.log(newUrl)
-
-    // const browser = await puppeteer.launch(
-    //     {headless: false,
-    //         args: [
-    //             `--proxy-server=${newUrl}`,
-    //             '--proxy-bypass-list=<-loopback>',
-    //         ],
-    //         executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'});
+    const puppeteerArgs = [
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+        '--disable-infobars',
+        '--disable-dev-shm-usage',
+        '--disable-blink-features=AutomationControlled',
+        '--ignore-certificate-errors',
+        '--no-first-run',
+        '--no-service-autorun',
+        '--password-store=basic',
+        '--system-developer-mode',
+        '--mute-audio',
+        '--disable-default-apps',
+        '--no-zygote',
+        '--disable-accelerated-2d-canvas',
+        '--disable-web-security'
+    ]
+    const browser = await puppeteer.launch(
+        {headless: false,
+            args: [
+                `--proxy-server=${newUrl}`,
+                '--proxy-bypass-list=<-loopback>',
+                ...puppeteerArgs
+            ],
+            executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'});
     //
 
     const api = new ChatGPTAPIBrowser({
