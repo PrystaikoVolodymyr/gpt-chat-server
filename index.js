@@ -1,7 +1,26 @@
 import fastify from 'fastify';
-import { ChatGPTAPIBrowser } from 'chatgpt';
-import puppeteer from 'puppeteer';
+import { ChatGPTAPIBrowser, getOpenAIAuth, ChatGPTAPI } from 'chatgpt';
 
+import arr from './ps.js'
+
+async function newBrowser() {
+    const api = new ChatGPTAPIBrowser({
+        email: arr.email,
+        password: arr.password,
+        minimize: false,
+        isGoogleLogin: true,
+    });
+        console.log(api)
+        await api.initSession()
+        const result = await api.sendMessage('Write a python version of bubble sort.')
+
+        // result.response is a markdown-formatted string
+        console.log(result)
+        await api.closeSession()
+
+}
+
+await newBrowser()
 const server = fastify();
 
 server.post('/question', async (request, reply) => {
@@ -16,21 +35,20 @@ try {
             isGoogleLogin: true
         });
 
-        // console.log(api)
         await api.initSession()
-        // console.log(api)
 
         const result = await api.sendMessage(question)
         console.log("result====================>", result);
         await api.closeSession()
 
-        // reply.send(result)
     } catch (e) {
         console.log(e);
     }
 })
 
-
+server.get('/', async (request, reply) => {
+     reply.send("You are here")
+})
 server.listen({ port: process.env.PORT || 5000 }, (error) => {
     console.log("Server Started on port "+ (process.env.PORT || 5000))
     if (error) {

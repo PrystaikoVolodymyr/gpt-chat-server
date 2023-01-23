@@ -24,8 +24,10 @@
   "homepage": "https://github.com/PrystaikoVolodymyr/gpt-chat-server#readme",
   "dependencies": {
     "chatgpt": "^3.4.2",
+    "chatgpt-io": "^1.0.9",
     "fastify": "^4.11.0",
-    "puppeteer": "^19.5.2"
+    "puppeteer": "^19.5.2",
+    "xvfb": "^0.4.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
